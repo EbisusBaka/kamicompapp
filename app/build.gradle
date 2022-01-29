@@ -1,43 +1,171 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
-    compileSdk 31
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
+    compileSdkVersion ver.androidSdk.compile
 
     defaultConfig {
         applicationId "ebisus.monkagiga.kamicompapp"
-        minSdk 26
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion ver.androidSdk.min
+        targetSdkVersion ver.androidSdk.target
+        versionCode ver.app.code
+        versionName "${ver.app.version.major}.${ver.app.version.minor}.${ver.app.version.patch}"
+        testApplicationId "ebisus.monkagiga.kamicompapp.test"
+        testInstrumentationRunner "ebisus.monkagiga.kamicompapp.HiltTestRunner"
+        multiDexEnabled true
+    }
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    sourceSets {
+        main {
+            java.srcDir("src/main/kotlin")
+        }
+        androidTest {
+            java.srcDir 'src/androidTest/kotlin'
+            java.srcDir 'src/sharedTest/kotlin'
+        }
+        test {
+            java.srcDir 'src/test/kotlin'
+            java.srcDir 'src/sharedTest/kotlin'
+        }
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+        }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+        exclude 'META-INF/*.kotlin_module'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = false
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     kotlinOptions {
-        jvmTarget = '1.8'
+        freeCompilerArgs += "-Xopt-in=kotlinx.coroutines.FlowPreview"
     }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation "androidx.appcompat:appcompat:$ver.appCompat"
+    implementation "com.google.android.material:material:$ver.appCompatLibs"
+    implementation "androidx.constraintlayout:constraintlayout:$ver.constraintLayout"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$ver.swipeRefresh"
+    implementation "androidx.core:core-ktx:$ver.ktxCore"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$ver.lifecycle"
+
+    implementation "androidx.work:work-runtime-ktx:$ver.work"
+    implementation "androidx.hilt:hilt-work:$ver.hiltAndroidX"
+
+    api "com.jakewharton.timber:timber:$ver.timber"
+
+    implementation "com.google.dagger:hilt-android:$ver.hilt"
+    kapt "com.google.dagger:hilt-compiler:$ver.hilt"
+    kapt "androidx.hilt:hilt-compiler:$ver.hiltAndroidX"
+
+    implementation "com.squareup.okhttp3:okhttp:$ver.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$ver.okhttp"
+    implementation "com.squareup.retrofit2:retrofit:$ver.retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$ver.retrofit"
+    implementation "com.squareup.moshi:moshi:$ver.moshi"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$ver.moshi"
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$ver.leakCanary"
+
+    implementation "androidx.fragment:fragment-ktx:$ver.fragment"
+    debugImplementation("androidx.fragment:fragment-testing:$ver.fragment") {
+        exclude group: 'androidx.test', module: 'core'
+    }
+
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$ver.coroutines"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$ver.coroutines"
+
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$ver.lifecycle"
+
+    implementation "androidx.datastore:datastore-preferences:$ver.dataStore"
+
+    implementation "com.github.bumptech.glide:glide:$ver.glide"
+
+    implementation "com.github.chrisbanes:PhotoView:$ver.photoView"
+
+    implementation "androidx.navigation:navigation-ui-ktx:$ver.navigation"
+    implementation "androidx.navigation:navigation-fragment-ktx:$ver.navigation"
+
+    implementation "androidx.room:room-runtime:$ver.room"
+    implementation "androidx.room:room-ktx:$ver.room"
+    kapt "androidx.room:room-compiler:$ver.room"
+
+    implementation "androidx.preference:preference-ktx:$ver.preferences"
+
+    implementation "com.github.GustavoRoss:Spanny:$ver.spanny"
+}
+
+dependencies {
+    androidTestImplementation "org.mockito.kotlin:mockito-kotlin:$ver.mockitoKotlin"
+
+    androidTestImplementation "androidx.test.ext:junit:$ver.androidXTestCore"
+    androidTestImplementation "androidx.test:core:$ver.androidXTestCore"
+    androidTestImplementation "androidx.test:runner:$ver.androidXTest"
+    androidTestImplementation("androidx.test.espresso:espresso-core:$ver.espresso") {
+        exclude group: 'org.checkerframework', module: 'checker'
+    }
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:$ver.espresso") {
+        exclude group: 'org.checkerframework', module: 'checker'
+    }
+
+    androidTestImplementation "android.arch.core:core-testing:$ver.arch"
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$ver.coroutines") {
+        exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
+    }
+
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$ver.hilt"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$ver.hilt"
+
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$ver.okhttp"
+    androidTestImplementation "androidx.work:work-testing:$ver.work"
+    androidTestImplementation "com.google.truth:truth:$ver.truth"
+}
+
+dependencies {
+    testImplementation "org.jetbrains.kotlin:kotlin-reflect:$ver.kotlin"
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$ver.kotlin"
+    testImplementation "android.arch.core:core-testing:$ver.arch"
+    testImplementation "com.google.truth:truth:$ver.truth"
+    testImplementation "org.json:json:$ver.json"
+
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$ver.coroutines"
+
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$ver.mockitoKotlin"
+    testImplementation "org.assertj:assertj-core:$ver.asertj"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$ver.okhttp"
+
+    testImplementation "app.cash.turbine:turbine:$ver.turbine"
 }
