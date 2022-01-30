@@ -1,6 +1,6 @@
 package ebisus.monkagiga.kamicompapp.core.domain
 
-class ImageResource(private val blowfish: Blowfish) {
+class ImageResourceProvider(private val blowfish: Blowfish) {
 
     fun getPath(key1: String, key2: String, id: Int, skin: Int?, format: String): String {
         val fullKey = "${key1}_${key2}_" + id.toString()

@@ -98,8 +98,6 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$ver.moshi"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$ver.moshi"
 
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:$ver.leakCanary"
-
     implementation "androidx.fragment:fragment-ktx:$ver.fragment"
     debugImplementation("androidx.fragment:fragment-testing:$ver.fragment") {
         exclude group: 'androidx.test', module: 'core'
@@ -126,6 +124,8 @@ dependencies {
     implementation "androidx.preference:preference-ktx:$ver.preferences"
 
     implementation "com.github.GustavoRoss:Spanny:$ver.spanny"
+
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$ver.leakCanary"
 }
 
 dependencies {

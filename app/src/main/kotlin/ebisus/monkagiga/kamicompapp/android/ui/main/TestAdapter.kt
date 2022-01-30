@@ -1,4 +1,4 @@
-package ebisus.monkagiga.kamicompapp.android.ui
+package ebisus.monkagiga.kamicompapp.android.ui.main
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

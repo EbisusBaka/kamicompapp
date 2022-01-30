@@ -1,4 +1,4 @@
-package ebisus.monkagiga.kamicompapp.android.ui
+package ebisus.monkagiga.kamicompapp.android.ui.main
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
