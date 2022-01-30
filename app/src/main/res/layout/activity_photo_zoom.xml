@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     tools:context=".android.ui.photozoom.PhotoZoomActivity">
 
   <com.github.chrisbanes.photoview.PhotoView
@@ -38,5 +39,27 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@id/characterName"
       tools:text="ABC" />
+
+  <Button
+      android:id="@+id/enPageButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="8dp"
+      android:backgroundTint="@color/colorAccent"
+      android:text="@string/en_wiki_page"
+      app:layout_anchorGravity="bottom|right|end"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent" />
+
+  <Button
+      android:id="@+id/jpPageButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="8dp"
+      android:backgroundTint="#e8c4ff"
+      android:text="@string/jp_wiki_page"
+      app:layout_anchorGravity="bottom|right|end"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/enPageButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import kotlinx.parcelize.Parcelize
 data class Kamihime(
     @PrimaryKey val id: Int,
     val name: String,
+    val jpName: String,
     val rarity: Rarity,
     val element: Element,
     val type: CharacterType,
