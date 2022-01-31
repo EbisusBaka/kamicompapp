@@ -2,17 +2,19 @@ package ebisus.monkagiga.kamicompapp.core.domain.entities
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import ebisus.monkagiga.kamicompapp.core.domain.enums.CharacterType
 import ebisus.monkagiga.kamicompapp.core.domain.enums.Element
 import ebisus.monkagiga.kamicompapp.core.domain.enums.ObtainLocation
 import ebisus.monkagiga.kamicompapp.core.domain.enums.Rarity
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 @Entity
 @Parcelize
 data class Kamihime(
-    @PrimaryKey val id: Int,
+    @PrimaryKey val id: Long,
     val name: String,
     val jpName: String,
     val rarity: Rarity,
@@ -20,9 +22,13 @@ data class Kamihime(
     val type: CharacterType,
     val quote: String?,
     val obtainLocation: ObtainLocation?,
-    val releaseWeaponId: Int?,
+    val releaseWeaponId: Long?,
     val hpMin: Int?,
     val hpMax: Int?,
     val atkMin: Int?,
     val atkMax: Int?,
-) : Parcelable
+) : Parcelable {
+
+    @IgnoredOnParcel @Ignore
+    var abilities: List<KamihimeAbility> = emptyList()
+}

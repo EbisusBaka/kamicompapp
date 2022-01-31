@@ -22,7 +22,7 @@
       </intent-filter>
     </activity>
     <activity
-        android:name=".android.ui.photozoom.PhotoZoomActivity"
+        android:name=".android.ui.kamihimedetails.KamihimeDetailsActivity"
         android:exported="true" />
   </application>
 

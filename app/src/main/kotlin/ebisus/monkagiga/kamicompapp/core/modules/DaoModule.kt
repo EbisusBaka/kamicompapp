@@ -6,6 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ebisus.monkagiga.kamicompapp.core.domain.Database
 import ebisus.monkagiga.kamicompapp.core.domain.dao.KamihimeAbilityDao
+import ebisus.monkagiga.kamicompapp.core.domain.dao.KamihimeAbilityEffectDao
+import ebisus.monkagiga.kamicompapp.core.domain.dao.KamihimeAbilityOutcomeDao
 import ebisus.monkagiga.kamicompapp.core.domain.dao.KamihimeDao
 import javax.inject.Singleton
 
@@ -23,5 +25,17 @@ object DaoModule {
     @Singleton
     fun providesKamihimeAbilityDao(database: Database): KamihimeAbilityDao {
         return database.kamihimeAbilityDao()
+    }
+
+    @Provides
+    @Singleton
+    fun providesKamihimeAbilityEffectDao(database: Database): KamihimeAbilityEffectDao {
+        return database.kamihimeAbilityEffectDao()
+    }
+
+    @Provides
+    @Singleton
+    fun providesKamihimeAbilityOutcomeDao(database: Database): KamihimeAbilityOutcomeDao {
+        return database.kamihimeAbilityOutcomeDao()
     }
 }

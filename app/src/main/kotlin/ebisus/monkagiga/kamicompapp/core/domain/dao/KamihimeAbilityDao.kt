@@ -10,11 +10,8 @@ import ebisus.monkagiga.kamicompapp.core.domain.entities.KamihimeAbility
 interface KamihimeAbilityDao {
 
     @Query("SELECT * FROM KamihimeAbility where kamihimeId = :kamihimeId")
-    suspend fun getKamihimeAbilities(kamihimeId: Int): List<KamihimeAbility>
-
-    @Query("DELETE FROM KamihimeAbility where kamihimeId = :kamihimeId")
-    suspend fun clearKamihimeAbilities(kamihimeId: Int)
+    suspend fun getKamihimeAbilities(kamihimeId: Long): List<KamihimeAbility>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun updateKamihimeAbilities(abilities: List<KamihimeAbility>)
+    suspend fun updateKamihimeAbility(ability: KamihimeAbility): Long
 }

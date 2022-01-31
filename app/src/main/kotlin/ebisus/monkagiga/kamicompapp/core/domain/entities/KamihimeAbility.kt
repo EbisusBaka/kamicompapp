@@ -1,10 +1,8 @@
 package ebisus.monkagiga.kamicompapp.core.domain.entities
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -19,10 +17,14 @@ import kotlinx.parcelize.Parcelize
     ]
 )
 data class KamihimeAbility(
-    @PrimaryKey val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val index: Int,
     val name: String,
     val cooldownSeconds: Int,
-    val index: Int,
     @ColumnInfo
-    val kamihimeId: Int
-) : Parcelable
+    var kamihimeId: Long? = null,
+) : Parcelable {
+
+    @IgnoredOnParcel @Ignore
+    var effects: List<KamihimeAbilityEffect> = emptyList()
+}

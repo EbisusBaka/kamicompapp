@@ -13,14 +13,12 @@
     <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
   </style>
 
-  <style name="AppTheme.NoActionBar">
+  <style name="AppTheme.NoActionBar" parent="AppTheme">
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
 
-  <style name="AppTheme.NoActionBar.FullScreen">
-    <item name="android:windowNoTitle">true</item>
-    <item name="android:windowActionBar">false</item>
+  <style name="AppTheme.NoActionBar.FullScreen" parent="AppTheme.NoActionBar">
     <item name="android:windowFullscreen">true</item>
     <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
     <item name="android:windowContentOverlay">@null</item>

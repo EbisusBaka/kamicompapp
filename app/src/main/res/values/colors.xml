@@ -2,10 +2,13 @@
 <resources>
   <color name="windowBackground">#EFF0F4</color>
   <color name="colorPrimary">#fff</color>
-  <color name="colorPrimaryDark">@android:color/black</color>
+  <color name="colorPrimaryDark">@color/colorAccentDark</color>
   <color name="colorAccent">#ffe8c4</color>
   <color name="colorAccentDark">#fdcb96</color>
   <color name="colorAccentPressed">#a87c4b</color>
   <color name="textPrimary">#000000</color>
   <color name="textSecondary">#888888</color>
+
+  <color name="sfw">#99ee99</color>
+  <color name="nsfw">#ee9999</color>
 </resources>

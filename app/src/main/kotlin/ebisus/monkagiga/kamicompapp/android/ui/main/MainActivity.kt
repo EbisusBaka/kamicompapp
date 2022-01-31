@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import ebisus.monkagiga.kamicompapp.android.ui.photozoom.PhotoZoomActivity
+import ebisus.monkagiga.kamicompapp.android.ui.kamihimedetails.KamihimeDetailsActivity
 import ebisus.monkagiga.kamicompapp.core.domain.ImageResourceProvider
 import ebisus.monkagiga.kamicompapp.databinding.ActivityMainBinding
 import ebisus.monkagiga.kamicompapp.databinding.ActivityMainBinding.inflate
@@ -56,8 +56,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openPhotoZoomActivity(item: TestItem) {
-        val intent = Intent(this, PhotoZoomActivity::class.java)
-        intent.putExtra(PhotoZoomActivity.EXTRA_ID, item.id)
+        val intent = Intent(this, KamihimeDetailsActivity::class.java)
+        intent.putExtra(KamihimeDetailsActivity.EXTRA_ID, item.id)
         startActivity(intent)
     }
 }

@@ -1,10 +1,10 @@
-package ebisus.monkagiga.kamicompapp.android.ui.photozoom
+package ebisus.monkagiga.kamicompapp.android.ui.kamihimedetails
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import ebisus.monkagiga.kamicompapp.core.domain.ImageResourceProvider
-import ebisus.monkagiga.kamicompapp.core.domain.models.KamihimeDetails
+import ebisus.monkagiga.kamicompapp.core.domain.embedded.KamihimeDetails
 import ebisus.monkagiga.kamicompapp.core.domain.repository.KamihimeRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PhotoZoomViewModel @Inject constructor(
+class KamihimeDetailsViewModel @Inject constructor(
     private val kamihimeRepository: KamihimeRepository,
     private var imageResourceProvider: ImageResourceProvider
 ) : ViewModel() {
@@ -27,18 +27,32 @@ class PhotoZoomViewModel @Inject constructor(
     val eventsFlow = eventChannel.receiveAsFlow()
 
     fun getData(id: Int) = viewModelScope.launch {
-        val kamihimeDetails = kamihimeRepository.getKamihimeDetails(id)
+        val kamihimeDetails = kamihimeRepository.getKamihimeDetails(id.toLong())
         _uiState.emit(
             State(
+                id = id,
                 data = kamihimeDetails,
-                imageUrl = imageResourceProvider.getPath("illustzoom", "chara", id, 0, "png")
+                imageUrl = imageResourceProvider.getPath("illust-com-kneeshot", "chara", id, 0, "png", sfw = false)
+            )
+        )
+    }
+
+    fun onSfwButtonClicked() = viewModelScope.launch {
+        val state = _uiState.value ?: return@launch
+        val newSfw = !state.sfw
+        _uiState.emit(
+            state.copy(
+                sfw = newSfw,
+                imageUrl = imageResourceProvider.getPath("illust-com-kneeshot", "chara", state.id, 0, "png", sfw = newSfw)
             )
         )
     }
 
     data class State(
+        val id: Int,
         val imageUrl: String,
-        val data: KamihimeDetails? = null
+        val data: KamihimeDetails? = null,
+        val sfw: Boolean = false
     )
 
     sealed class Event {

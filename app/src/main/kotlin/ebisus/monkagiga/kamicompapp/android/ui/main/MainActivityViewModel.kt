@@ -28,7 +28,7 @@ class MainActivityViewModel @Inject constructor(
 
     private fun createItems() = viewModelScope.launch {
         populateDatabaseScript.populate()
-        val items = ((5000..5220).toList() + (6000..6300).toList() + (7000..7220).toList()).map {
+        val items = ((5001..5220).toList() + (6000..6300).toList() + (7000..7220).toList()).map {
             TestItem(it)
         }
         _uiState.emit(

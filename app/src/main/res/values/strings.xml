@@ -2,4 +2,6 @@
   <string name="app_name">Kamihime Companion App</string>
   <string name="en_wiki_page">EN WIKI</string>
   <string name="jp_wiki_page">JP WIKI</string>
+  <string name="nsfw">NSFW</string>
+  <string name="sfw">SFW</string>
 </resources>
