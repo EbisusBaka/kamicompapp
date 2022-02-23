@@ -1,4 +1,4 @@
-package ebisus.monkagiga.kamicompapp.android.ui.main
+package ebisus.monkagiga.kamicompapp.android.ui.util
 
 import android.content.Context
 import android.graphics.Rect

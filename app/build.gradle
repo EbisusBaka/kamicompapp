@@ -81,6 +81,7 @@ dependencies {
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$ver.swipeRefresh"
     implementation "androidx.core:core-ktx:$ver.ktxCore"
     implementation "androidx.lifecycle:lifecycle-common-java8:$ver.lifecycle"
+    implementation "androidx.palette:palette:$ver.palette"
 
     implementation "androidx.work:work-runtime-ktx:$ver.work"
     implementation "androidx.hilt:hilt-work:$ver.hiltAndroidX"

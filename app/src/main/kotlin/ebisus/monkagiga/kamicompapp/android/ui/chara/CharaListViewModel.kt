@@ -1,4 +1,4 @@
-package ebisus.monkagiga.kamicompapp.android.ui.main
+package ebisus.monkagiga.kamicompapp.android.ui.chara
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(
+class CharaListViewModel @Inject constructor(
     private val populateDatabaseScript: PopulateDatabaseScript
 ) : ViewModel() {
 
@@ -29,7 +29,7 @@ class MainActivityViewModel @Inject constructor(
     private fun createItems() = viewModelScope.launch {
         populateDatabaseScript.populate()
         val items = ((5001..5220).toList() + (6000..6300).toList() + (7000..7220).toList()).map {
-            TestItem(it)
+            CharaListItem(it)
         }
         _uiState.emit(
             _uiState.value.copy(items = items)
@@ -37,7 +37,7 @@ class MainActivityViewModel @Inject constructor(
     }
 
     data class State(
-        val items: List<TestItem>
+        val items: List<CharaListItem>
     )
 
     sealed class Event {

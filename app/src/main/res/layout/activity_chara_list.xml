@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".android.ui.main.MainActivity">
+    tools:context=".android.ui.chara.CharaListActivity">
 
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/recyclerView"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      tools:listitem="@layout/listitem_test" />
+      tools:listitem="@layout/listitem_chara" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

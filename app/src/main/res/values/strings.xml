@@ -4,4 +4,8 @@
   <string name="jp_wiki_page">JP WIKI</string>
   <string name="nsfw">NSFW</string>
   <string name="sfw">SFW</string>
+  <string name="kamihime">Kamihime</string>
+  <string name="souls">Souls</string>
+  <string name="eidolons">Eidolons</string>
+  <string name="weapons">Weapons</string>
 </resources>

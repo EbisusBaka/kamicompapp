@@ -13,18 +13,18 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import dagger.hilt.android.AndroidEntryPoint
 import ebisus.monkagiga.kamicompapp.R
-import ebisus.monkagiga.kamicompapp.databinding.ActivityKamihimeDetailsBinding
+import ebisus.monkagiga.kamicompapp.databinding.ActivityCharaDetailsBinding
 import ebisus.monkagiga.kamicompapp.ext.dp
 import ebisus.monkagiga.kamicompapp.ext.viewBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
-class KamihimeDetailsActivity : AppCompatActivity() {
+class CharaDetailsActivity : AppCompatActivity() {
 
-    private val binding: ActivityKamihimeDetailsBinding by viewBinding(ActivityKamihimeDetailsBinding::inflate)
+    private val binding: ActivityCharaDetailsBinding by viewBinding(ActivityCharaDetailsBinding::inflate)
 
-    private val viewModel: KamihimeDetailsViewModel by viewModels()
+    private val viewModel: CharaDetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +49,7 @@ class KamihimeDetailsActivity : AppCompatActivity() {
     }
 
     private fun loadDetails(
-        state: KamihimeDetailsViewModel.State
+        state: CharaDetailsViewModel.State
     ) {
         state.data ?: return
         binding.title.text = state.data.kamihime.name
@@ -66,7 +66,7 @@ class KamihimeDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadMainImage(state: KamihimeDetailsViewModel.State) {
+    private fun loadMainImage(state: CharaDetailsViewModel.State) {
         val sfwButtonText = if (state.sfw) R.string.nsfw else R.string.sfw
         val sfwButtonColor = if (state.sfw) R.color.nsfw else R.color.sfw
         binding.sfwTextView.text = getString(sfwButtonText)

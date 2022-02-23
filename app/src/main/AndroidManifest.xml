@@ -13,7 +13,7 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme.NoActionBar.FullScreen">
     <activity
-        android:name=".android.ui.main.MainActivity"
+        android:name=".android.ui.dashboard.DashboardActivity"
         android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,10 @@
       </intent-filter>
     </activity>
     <activity
-        android:name=".android.ui.kamihimedetails.KamihimeDetailsActivity"
+        android:name=".android.ui.chara.CharaListActivity"
+        android:exported="true" />
+    <activity
+        android:name=".android.ui.kamihimedetails.CharaDetailsActivity"
         android:exported="true" />
   </application>
 

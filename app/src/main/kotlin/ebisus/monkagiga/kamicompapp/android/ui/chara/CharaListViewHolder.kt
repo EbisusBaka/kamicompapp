@@ -1,4 +1,4 @@
-package ebisus.monkagiga.kamicompapp.android.ui.main
+package ebisus.monkagiga.kamicompapp.android.ui.chara
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,16 +9,16 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import ebisus.monkagiga.kamicompapp.R
 import ebisus.monkagiga.kamicompapp.core.domain.ImageResourceProvider
-import ebisus.monkagiga.kamicompapp.databinding.ListitemTestBinding
+import ebisus.monkagiga.kamicompapp.databinding.ListitemCharaBinding
 
-class TestViewHolder(
-    private val binding: ListitemTestBinding,
+class CharaListViewHolder(
+    private val binding: ListitemCharaBinding,
     private val imageResourceProvider: ImageResourceProvider,
-    private val itemClickedListener: (TestItem) -> Unit
+    private val itemClickedListener: (CharaListItem) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    constructor(parent: ViewGroup, imageResourceProvider: ImageResourceProvider, itemClickedListener: (TestItem) -> Unit) : this(
-        ListitemTestBinding.inflate(
+    constructor(parent: ViewGroup, imageResourceProvider: ImageResourceProvider, itemClickedListener: (CharaListItem) -> Unit) : this(
+        ListitemCharaBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -27,7 +27,7 @@ class TestViewHolder(
         itemClickedListener
     )
 
-    fun bind(item: TestItem) {
+    fun bind(item: CharaListItem) {
 
         val drawable = CircularProgressDrawable(itemView.context)
         drawable.strokeWidth = 5f

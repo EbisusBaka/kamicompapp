@@ -1,4 +1,4 @@
-package ebisus.monkagiga.kamicompapp.android.ui.main
+package ebisus.monkagiga.kamicompapp.android.ui.chara
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import ebisus.monkagiga.kamicompapp.android.ui.kamihimedetails.KamihimeDetailsActivity
+import ebisus.monkagiga.kamicompapp.android.ui.kamihimedetails.CharaDetailsActivity
+import ebisus.monkagiga.kamicompapp.android.ui.util.ItemOffsetDecoration
 import ebisus.monkagiga.kamicompapp.core.domain.ImageResourceProvider
-import ebisus.monkagiga.kamicompapp.databinding.ActivityMainBinding
-import ebisus.monkagiga.kamicompapp.databinding.ActivityMainBinding.inflate
+import ebisus.monkagiga.kamicompapp.databinding.ActivityCharaListBinding
 import ebisus.monkagiga.kamicompapp.ext.dp
 import ebisus.monkagiga.kamicompapp.ext.viewBinding
 import kotlinx.coroutines.flow.launchIn
@@ -18,16 +18,16 @@ import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class CharaListActivity : AppCompatActivity() {
 
-    private val binding: ActivityMainBinding by viewBinding(::inflate)
+    private val binding: ActivityCharaListBinding by viewBinding(ActivityCharaListBinding::inflate)
 
-    private val viewModel: MainActivityViewModel by viewModels()
+    private val viewModel: CharaListViewModel by viewModels()
 
     @Inject
     lateinit var imageResourceProvider: ImageResourceProvider
 
-    private lateinit var adapter: TestAdapter
+    private lateinit var adapter: CharaListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        adapter = TestAdapter(
+        adapter = CharaListAdapter(
             itemFactory = {
-                TestViewHolder(it, imageResourceProvider) { item ->
+                CharaListViewHolder(it, imageResourceProvider) { item ->
                     openPhotoZoomActivity(item)
                 }
             })
@@ -55,9 +55,9 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = adapter
     }
 
-    private fun openPhotoZoomActivity(item: TestItem) {
-        val intent = Intent(this, KamihimeDetailsActivity::class.java)
-        intent.putExtra(KamihimeDetailsActivity.EXTRA_ID, item.id)
+    private fun openPhotoZoomActivity(item: CharaListItem) {
+        val intent = Intent(this, CharaDetailsActivity::class.java)
+        intent.putExtra(CharaDetailsActivity.EXTRA_ID, item.id)
         startActivity(intent)
     }
 }

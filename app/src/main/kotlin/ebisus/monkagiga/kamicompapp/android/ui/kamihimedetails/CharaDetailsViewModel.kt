@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class KamihimeDetailsViewModel @Inject constructor(
+class CharaDetailsViewModel @Inject constructor(
     private val kamihimeRepository: KamihimeRepository,
     private var imageResourceProvider: ImageResourceProvider
 ) : ViewModel() {
