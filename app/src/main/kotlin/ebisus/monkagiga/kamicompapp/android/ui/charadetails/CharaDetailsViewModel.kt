@@ -1,4 +1,4 @@
-package ebisus.monkagiga.kamicompapp.android.ui.kamihimedetails
+package ebisus.monkagiga.kamicompapp.android.ui.charadetails
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -26,8 +26,8 @@ class CharaDetailsViewModel @Inject constructor(
     private val eventChannel = Channel<Event>(Channel.CONFLATED)
     val eventsFlow = eventChannel.receiveAsFlow()
 
-    fun getData(id: Int) = viewModelScope.launch {
-        val kamihimeDetails = kamihimeRepository.getKamihimeDetails(id.toLong())
+    fun getData(id: Long) = viewModelScope.launch {
+        val kamihimeDetails = kamihimeRepository.getKamihimeDetails(id)
         _uiState.emit(
             State(
                 id = id,
@@ -49,13 +49,11 @@ class CharaDetailsViewModel @Inject constructor(
     }
 
     data class State(
-        val id: Int,
+        val id: Long,
         val imageUrl: String,
         val data: KamihimeDetails? = null,
         val sfw: Boolean = false
     )
 
-    sealed class Event {
-
-    }
+    sealed class Event
 }

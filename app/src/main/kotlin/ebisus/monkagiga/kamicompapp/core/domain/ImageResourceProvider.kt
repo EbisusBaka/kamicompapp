@@ -2,7 +2,7 @@ package ebisus.monkagiga.kamicompapp.core.domain
 
 class ImageResourceProvider(private val blowfish: Blowfish) {
 
-    fun getPath(key1: String, key2: String, id: Int, skin: Int?, format: String, sfw: Boolean = false): String {
+    fun getPath(key1: String, key2: String, id: Long, skin: Int?, format: String, sfw: Boolean = false): String {
         val fullKey = "${key1}_${key2}_" + id.toString()
             .padStart(4, '0') + if (skin != null) "_$skin" else ""
         val encryptedPath = blowfish.encrypt(fullKey)

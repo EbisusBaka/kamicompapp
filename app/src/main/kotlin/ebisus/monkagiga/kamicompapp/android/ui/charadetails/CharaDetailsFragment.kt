@@ -1,38 +1,43 @@
-package ebisus.monkagiga.kamicompapp.android.ui.kamihimedetails
+package ebisus.monkagiga.kamicompapp.android.ui.charadetails
 
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import dagger.hilt.android.AndroidEntryPoint
 import ebisus.monkagiga.kamicompapp.R
-import ebisus.monkagiga.kamicompapp.databinding.ActivityCharaDetailsBinding
+import ebisus.monkagiga.kamicompapp.android.ui.util.viewBinding
+import ebisus.monkagiga.kamicompapp.databinding.FragmentCharaDetailsBinding
 import ebisus.monkagiga.kamicompapp.ext.dp
-import ebisus.monkagiga.kamicompapp.ext.viewBinding
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
-class CharaDetailsActivity : AppCompatActivity() {
+class CharaDetailsFragment : Fragment() {
 
-    private val binding: ActivityCharaDetailsBinding by viewBinding(ActivityCharaDetailsBinding::inflate)
+    private val binding: FragmentCharaDetailsBinding by viewBinding(FragmentCharaDetailsBinding::inflate)
 
     private val viewModel: CharaDetailsViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initListener()
 
-        viewModel.getData(intent.getIntExtra(EXTRA_ID, -1))
+        viewModel.getData(requireArguments().getLong("kamihimeId", -1))
 
         viewModel.uiState
             .onEach { state ->
@@ -70,12 +75,12 @@ class CharaDetailsActivity : AppCompatActivity() {
         val sfwButtonText = if (state.sfw) R.string.nsfw else R.string.sfw
         val sfwButtonColor = if (state.sfw) R.color.nsfw else R.color.sfw
         binding.sfwTextView.text = getString(sfwButtonText)
-        binding.sfwButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, sfwButtonColor))
-        val drawable = CircularProgressDrawable(this)
+        binding.sfwButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), sfwButtonColor))
+        val drawable = CircularProgressDrawable(requireContext())
         drawable.strokeWidth = 4.dp.toFloat()
         drawable.centerRadius = 24.dp.toFloat()
         @Suppress("DEPRECATION")
-        drawable.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorAccentPressed))
+        drawable.setColorSchemeColors(ContextCompat.getColor(requireContext(), R.color.colorAccentPressed))
         drawable.start()
         Glide.with(binding.image)
             .load(state.imageUrl)

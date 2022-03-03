@@ -29,6 +29,39 @@ data class Kamihime(
     val atkMax: Int?,
 ) : Parcelable {
 
+    constructor(
+        id: Long,
+        name: String,
+        jpName: String,
+        rarity: Rarity,
+        element: Element,
+        type: CharacterType,
+        quote: String?,
+        obtainLocation: ObtainLocation?,
+        releaseWeaponId: Long?,
+        hpMin: Int?,
+        hpMax: Int?,
+        atkMin: Int?,
+        atkMax: Int?,
+        abilities: List<KamihimeAbility>
+    ) : this(
+        id = id,
+        name = name,
+        jpName = jpName,
+        rarity = rarity,
+        element = element,
+        type = type,
+        quote = quote,
+        obtainLocation = obtainLocation,
+        releaseWeaponId = releaseWeaponId,
+        hpMin = hpMin,
+        hpMax = hpMax,
+        atkMin = atkMin,
+        atkMax = atkMax
+    ) {
+        this.abilities = abilities
+    }
+
     @IgnoredOnParcel @Ignore
     var abilities: List<KamihimeAbility> = emptyList()
 }

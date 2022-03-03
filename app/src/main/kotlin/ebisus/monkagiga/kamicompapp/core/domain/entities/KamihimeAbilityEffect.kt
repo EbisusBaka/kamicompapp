@@ -30,6 +30,14 @@ data class KamihimeAbilityEffect(
     var abilityId: Long? = null,
 ) : Parcelable {
 
+    constructor(condition: AbilityEffectCondition, abilityTarget: AbilityTarget, outcomes: List<KamihimeAbilityOutcome>)
+        : this(condition = condition, abilityTarget = abilityTarget) {
+        this.outcomes = outcomes
+    }
+
+    constructor(condition: AbilityEffectCondition, abilityTarget: AbilityTarget, outcome: KamihimeAbilityOutcome)
+        : this(condition = condition, abilityTarget = abilityTarget, outcomes = listOf(outcome))
+
     @IgnoredOnParcel @Ignore
     var outcomes: List<KamihimeAbilityOutcome> = emptyList()
 }

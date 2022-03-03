@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboard"
+    tools:ignore="UnusedNavigation">
+
+  <fragment
+      android:id="@+id/dashboard"
+      android:name="ebisus.monkagiga.kamicompapp.android.ui.dashboard.DashboardFragment"
+      android:label="Dashboard"
+      tools:layout="@layout/fragment_dashboard">
+
+    <action
+        android:id="@+id/action_dashboard_to_chara_list"
+        app:destination="@id/chara_list" />
+  </fragment>
+
+  <fragment
+      android:id="@+id/chara_list"
+      android:name="ebisus.monkagiga.kamicompapp.android.ui.chara.CharaListFragment"
+      android:label="Kamihime List"
+      tools:layout="@layout/fragment_chara_list">
+    <action
+        android:id="@+id/action_chara_list_to_chara_details"
+        app:destination="@id/chara_details">
+      <argument
+          android:name="kamihimeId"
+          app:argType="long" />
+    </action>
+  </fragment>
+
+  <fragment
+      android:id="@+id/chara_details"
+      android:name="ebisus.monkagiga.kamicompapp.android.ui.charadetails.CharaDetailsFragment"
+      android:label="Kamihime Details"
+      tools:layout="@layout/fragment_chara_details" />
+
+</navigation>

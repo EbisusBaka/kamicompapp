@@ -22,7 +22,7 @@ import kotlinx.parcelize.Parcelize
 data class KamihimeAbilityOutcome(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val outcomeType: AbilityOutcomeType,
-    val metaData: String,
+    val metaData: GenericMetadata,
     @ColumnInfo
     var effectId: Long? = null
 ) : Parcelable

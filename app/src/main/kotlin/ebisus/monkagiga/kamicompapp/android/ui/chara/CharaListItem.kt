@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CharaListItem(
-    val id: Int
+    val id: Long
 ) : Parcelable

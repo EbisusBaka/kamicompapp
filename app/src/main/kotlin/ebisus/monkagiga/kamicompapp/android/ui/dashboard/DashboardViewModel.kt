@@ -36,23 +36,23 @@ class DashboardViewModel @Inject constructor(
                 items = listOf(
                     DashboardItem(
                         dashboardItemType = DashboardItemType.KAMIHIME,
-                        imageUrlGenerator = { imageResourceProvider.getPath("illust-com-kneeshot", "chara", (5001..5200).random(), 0, "png", false) },
+                        imageUrlGenerator = { imageResourceProvider.getPath("illust-com-kneeshot", "chara", (5001..5200L).random(), 0, "png", false) },
                         text = R.string.kamihime,
                     ),
                     DashboardItem(
                         dashboardItemType = DashboardItemType.SOUL,
-                        imageUrlGenerator = { imageResourceProvider.getPath("illust-com-kneeshot", "job", (1..40).random(), 0, "png", false) },
+                        imageUrlGenerator = { imageResourceProvider.getPath("illust-com-kneeshot", "job", (1..40L).random(), 0, "png", false) },
                         text = R.string.souls,
                     ),
                     DashboardItem(
                         dashboardItemType = DashboardItemType.EIDOLONS,
-                        imageUrlGenerator = { imageResourceProvider.getPath("illust-com-kneeshot", "summon", (5001..5040).random(), 0, "png", false) },
+                        imageUrlGenerator = { imageResourceProvider.getPath("illust-com-kneeshot", "summon", (5001..5040L).random(), 0, "png", false) },
                         text = R.string.eidolons,
                     ),
                     DashboardItem(
                         dashboardItemType = DashboardItemType.WEAPONS,
                         imageUrlGenerator = {
-                            val id = (listOf(1..20, 411..422, 431..439, 441..458, 1001..1060, 2001..2210, 2501..2752, 7001..7003).random()).random()
+                            val id = (listOf(1..20L, 411..422L, 431..439L, 441..458L, 1001..1060L, 2001..2210L, 2501..2752L, 7001..7003L).random()).random()
                             imageResourceProvider.getPath("illustzoom", "weapon", id, 0, "png", false)
                         },
                         text = R.string.weapons,
@@ -69,6 +69,9 @@ class DashboardViewModel @Inject constructor(
     fun onDashboardItemClicked(item: DashboardItem) = viewModelScope.launch {
         when (item.dashboardItemType) {
             DashboardItemType.KAMIHIME -> eventChannel.send(Event.OpenKamihimeList)
+            DashboardItemType.SOUL -> eventChannel.send(Event.OpenSoulList)
+            DashboardItemType.EIDOLONS -> eventChannel.send(Event.OpenEidolonList)
+            DashboardItemType.WEAPONS -> eventChannel.send(Event.OpenWeaponList)
         }
     }
 
@@ -78,5 +81,8 @@ class DashboardViewModel @Inject constructor(
 
     sealed class Event {
         object OpenKamihimeList : Event()
+        object OpenSoulList : Event()
+        object OpenEidolonList : Event()
+        object OpenWeaponList : Event()
     }
 }

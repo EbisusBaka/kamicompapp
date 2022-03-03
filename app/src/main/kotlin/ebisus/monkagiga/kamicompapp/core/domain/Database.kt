@@ -3,7 +3,14 @@ package ebisus.monkagiga.kamicompapp.core.domain
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import ebisus.monkagiga.kamicompapp.core.domain.converters.*
+import ebisus.monkagiga.kamicompapp.core.domain.converters.AbilityColorConverter
+import ebisus.monkagiga.kamicompapp.core.domain.converters.AbilityEffectConditionConverter
+import ebisus.monkagiga.kamicompapp.core.domain.converters.AbilityTargetConverter
+import ebisus.monkagiga.kamicompapp.core.domain.converters.CharacterTypeConverter
+import ebisus.monkagiga.kamicompapp.core.domain.converters.ElementConverter
+import ebisus.monkagiga.kamicompapp.core.domain.converters.MetadataConverter
+import ebisus.monkagiga.kamicompapp.core.domain.converters.ObtainLocationConverter
+import ebisus.monkagiga.kamicompapp.core.domain.converters.RarityConverter
 import ebisus.monkagiga.kamicompapp.core.domain.dao.KamihimeAbilityDao
 import ebisus.monkagiga.kamicompapp.core.domain.dao.KamihimeAbilityEffectDao
 import ebisus.monkagiga.kamicompapp.core.domain.dao.KamihimeAbilityOutcomeDao
@@ -29,7 +36,9 @@ import ebisus.monkagiga.kamicompapp.core.domain.entities.KamihimeAbilityOutcome
     CharacterTypeConverter::class,
     ObtainLocationConverter::class,
     AbilityEffectConditionConverter::class,
-    AbilityTargetConverter::class
+    AbilityTargetConverter::class,
+    MetadataConverter::class,
+    AbilityColorConverter::class
 )
 abstract class Database : RoomDatabase() {
 
