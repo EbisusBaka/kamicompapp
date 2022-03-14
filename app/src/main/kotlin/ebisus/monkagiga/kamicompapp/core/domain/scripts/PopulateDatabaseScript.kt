@@ -43,13 +43,15 @@ class PopulateDatabaseScript @Inject constructor(
                         name = "Holy Ascension",
                         cooldownSeconds = 7,
                         abilityColor = AbilityColor.RED,
+                        abilityIconId = 33,
                         effect = KamihimeAbilityEffect(
                             condition = AbilityEffectCondition.NO_CONDITION,
                             abilityTarget = AbilityTarget.ALL_ENEMIES,
                             outcome = KamihimeAbilityOutcome(
                                 outcomeType = AbilityOutcomeType.DEALS_DAMAGE,
                                 metaData = GenericMetadata(
-                                    MetadataKey.AMOUNT to 2.5
+                                    MetadataKey.AMOUNT to 2.5,
+                                    MetadataKey.ELEMENT to Element.LIGHT.name
                                 )
                             )
                         )
@@ -59,6 +61,7 @@ class PopulateDatabaseScript @Inject constructor(
                         name = "San Michel",
                         cooldownSeconds = 7,
                         abilityColor = AbilityColor.YELLOW,
+                        abilityIconId = 17,
                         effect = KamihimeAbilityEffect(
                             condition = AbilityEffectCondition.NO_CONDITION,
                             abilityTarget = AbilityTarget.TEAM,
@@ -75,6 +78,7 @@ class PopulateDatabaseScript @Inject constructor(
                         name = "Sacred Conviction",
                         cooldownSeconds = 8,
                         abilityColor = AbilityColor.YELLOW,
+                        abilityIconId = 11,
                         effect = KamihimeAbilityEffect(
                             condition = AbilityEffectCondition.NO_CONDITION,
                             abilityTarget = AbilityTarget.TEAM,

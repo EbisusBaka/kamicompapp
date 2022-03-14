@@ -3,7 +3,6 @@ package ebisus.monkagiga.kamicompapp.android.ui.charadetails
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import ebisus.monkagiga.kamicompapp.core.domain.ImageResourceProvider
 import ebisus.monkagiga.kamicompapp.core.domain.embedded.KamihimeDetails
 import ebisus.monkagiga.kamicompapp.core.domain.repository.KamihimeRepository
 import kotlinx.coroutines.channels.Channel
@@ -17,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CharaDetailsViewModel @Inject constructor(
     private val kamihimeRepository: KamihimeRepository,
-    private var imageResourceProvider: ImageResourceProvider
+    private val charaDetailsItemTransformer: CharaDetailsItemTransformer
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<State?>(null)
@@ -32,27 +31,28 @@ class CharaDetailsViewModel @Inject constructor(
             State(
                 id = id,
                 data = kamihimeDetails,
-                imageUrl = imageResourceProvider.getPath("illust-com-kneeshot", "chara", id, 0, "png", sfw = false)
+                items = charaDetailsItemTransformer.transform(id, kamihimeDetails, sfw = false)
             )
         )
     }
 
     fun onSfwButtonClicked() = viewModelScope.launch {
         val state = _uiState.value ?: return@launch
+        val data = state.data
         val newSfw = !state.sfw
         _uiState.emit(
             state.copy(
                 sfw = newSfw,
-                imageUrl = imageResourceProvider.getPath("illust-com-kneeshot", "chara", state.id, 0, "png", sfw = newSfw)
+                items = charaDetailsItemTransformer.transform(state.id, data, sfw = newSfw)
             )
         )
     }
 
     data class State(
         val id: Long,
-        val imageUrl: String,
         val data: KamihimeDetails? = null,
-        val sfw: Boolean = false
+        val sfw: Boolean = false,
+        val items: List<CharaDetailsItem>
     )
 
     sealed class Event

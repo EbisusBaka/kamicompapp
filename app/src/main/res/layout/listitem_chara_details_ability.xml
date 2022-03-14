@@ -1,0 +1,117 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    app:strokeWidth="8dp"
+    tools:strokeColor="#fff">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/contentLayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="8dp"
+      tools:background="#fff">
+
+
+    <FrameLayout
+        android:id="@+id/imageFrame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+      <ImageView
+          android:id="@+id/image"
+          android:layout_width="64dp"
+          android:layout_height="64dp"
+          tools:src="#f0f" />
+
+      <ImageView
+          android:id="@+id/frame"
+          android:layout_width="64dp"
+          android:layout_height="64dp"
+          android:layout_marginEnd="8dp"
+          tools:src="#0f0" />
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/title_frame"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cooldownTextView"
+        app:layout_constraintStart_toEndOf="@id/imageFrame"
+        app:layout_constraintTop_toTopOf="parent">
+
+      <TextView
+          android:id="@+id/abilityTitle"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:gravity="center_vertical"
+          android:paddingEnd="6dp"
+          android:paddingBottom="2dp"
+          android:textColor="@color/textPrimary"
+          android:textSize="16sp"
+          android:textStyle="bold"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="Ability " />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/cooldownTextView"
+        android:layout_width="24sp"
+        android:layout_height="0dp"
+        android:background="#000"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        app:flow_verticalBias="1.0"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="9" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/descriptionLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:layout_constraintBottom_toTopOf="@id/paddingView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageFrame"
+        app:layout_constraintTop_toBottomOf="@id/title_frame">
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/abilityEffectList"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          app:layout_constrainedHeight="true"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/paddingView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageFrame"
+        app:layout_constraintTop_toBottomOf="@id/descriptionLayout"
+        app:layout_constraintVertical_weight="1.0" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

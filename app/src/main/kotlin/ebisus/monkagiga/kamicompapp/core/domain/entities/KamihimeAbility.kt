@@ -25,26 +25,29 @@ data class KamihimeAbility(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val index: Int,
     val name: String,
-    val cooldownSeconds: Int,
+    val cooldownTurns: Int,
     val abilityColor: AbilityColor,
+    val abilityIconId: Long,
     @ColumnInfo
     var kamihimeId: Long? = null,
 ) : Parcelable {
 
-    constructor(index: Int, name: String, cooldownSeconds: Int, abilityColor: AbilityColor, effects: List<KamihimeAbilityEffect>) : this(
+    constructor(index: Int, name: String, cooldownSeconds: Int, abilityColor: AbilityColor, abilityIconId: Long, effects: List<KamihimeAbilityEffect>) : this(
         index = index,
         name = name,
-        cooldownSeconds = cooldownSeconds,
-        abilityColor = abilityColor
+        cooldownTurns = cooldownSeconds,
+        abilityColor = abilityColor,
+        abilityIconId = abilityIconId
     ) {
         this.effects = effects
     }
 
-    constructor(index: Int, name: String, cooldownSeconds: Int, abilityColor: AbilityColor, effect: KamihimeAbilityEffect) : this(
+    constructor(index: Int, name: String, cooldownSeconds: Int, abilityColor: AbilityColor, abilityIconId: Long, effect: KamihimeAbilityEffect) : this(
         index = index,
         name = name,
         cooldownSeconds = cooldownSeconds,
         abilityColor = abilityColor,
+        abilityIconId = abilityIconId,
         effects = listOf(effect)
     )
 

@@ -11,4 +11,9 @@
 
   <color name="sfw">#99ee99</color>
   <color name="nsfw">#ee9999</color>
+
+  <color name="abilityRed">#E91E63</color>
+  <color name="abilityBlue">#2196F3</color>
+  <color name="abilityYellow">#FF9800</color>
+  <color name="abilityGreen">#4CAF50</color>
 </resources>
