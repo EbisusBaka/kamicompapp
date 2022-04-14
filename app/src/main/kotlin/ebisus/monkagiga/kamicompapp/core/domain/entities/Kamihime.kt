@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import ebisus.monkagiga.kamicompapp.android.ui.combined.FilterTag
 import ebisus.monkagiga.kamicompapp.core.domain.enums.CharacterType
 import ebisus.monkagiga.kamicompapp.core.domain.enums.Element
 import ebisus.monkagiga.kamicompapp.core.domain.enums.ObtainLocation
@@ -27,6 +28,9 @@ data class Kamihime(
     val hpMax: Int?,
     val atkMin: Int?,
     val atkMax: Int?,
+    val preAwakenId: Long?,
+    val postAwakenId: Long?,
+    val additionalTags: List<FilterTag>,
 ) : Parcelable {
 
     constructor(
@@ -43,6 +47,9 @@ data class Kamihime(
         hpMax: Int?,
         atkMin: Int?,
         atkMax: Int?,
+        preAwakenId: Long?,
+        postAwakenId: Long?,
+        additionalTags: List<FilterTag>,
         abilities: List<KamihimeAbility>
     ) : this(
         id = id,
@@ -57,7 +64,10 @@ data class Kamihime(
         hpMin = hpMin,
         hpMax = hpMax,
         atkMin = atkMin,
-        atkMax = atkMax
+        atkMax = atkMax,
+        preAwakenId = preAwakenId,
+        postAwakenId = postAwakenId,
+        additionalTags = additionalTags
     ) {
         this.abilities = abilities
     }

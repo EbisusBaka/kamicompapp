@@ -1,5 +1,6 @@
 package ebisus.monkagiga.kamicompapp.android.ui.dashboard
 
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
@@ -43,6 +44,10 @@ class DashboardViewHolder(
     private fun loadImage(
         item: DashboardItem
     ) {
+        if(item.dashboardItemType == DashboardItemType.COMBINED) {
+            binding.image.background = ColorDrawable(ContextCompat.getColor(itemView.context, R.color.combinedList))
+        }
+        val imageGenerator = item.imageUrlGenerator ?: return
         val drawable = CircularProgressDrawable(itemView.context)
         drawable.strokeWidth = 5f
         drawable.centerRadius = 30f
@@ -50,7 +55,7 @@ class DashboardViewHolder(
         drawable.setColorSchemeColors(ContextCompat.getColor(itemView.context, R.color.colorAccentPressed))
         drawable.start()
         Glide.with(binding.image)
-            .load(item.imageUrlGenerator())
+            .load(imageGenerator())
             .placeholder(drawable)
             .transition(DrawableTransitionOptions.withCrossFade())
             .listener(object : RequestListener<Drawable> {

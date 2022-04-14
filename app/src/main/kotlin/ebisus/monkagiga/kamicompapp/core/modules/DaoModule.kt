@@ -5,6 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ebisus.monkagiga.kamicompapp.core.domain.Database
+import ebisus.monkagiga.kamicompapp.core.domain.dao.EidolonDao
 import ebisus.monkagiga.kamicompapp.core.domain.dao.KamihimeAbilityDao
 import ebisus.monkagiga.kamicompapp.core.domain.dao.KamihimeAbilityEffectDao
 import ebisus.monkagiga.kamicompapp.core.domain.dao.KamihimeAbilityOutcomeDao
@@ -37,5 +38,11 @@ object DaoModule {
     @Singleton
     fun providesKamihimeAbilityOutcomeDao(database: Database): KamihimeAbilityOutcomeDao {
         return database.kamihimeAbilityOutcomeDao()
+    }
+
+    @Provides
+    @Singleton
+    fun providesEidolonDao(database: Database): EidolonDao {
+        return database.eidolonDao()
     }
 }

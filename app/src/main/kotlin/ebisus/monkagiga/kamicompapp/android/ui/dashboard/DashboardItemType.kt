@@ -4,5 +4,6 @@ enum class DashboardItemType {
     KAMIHIME,
     SOUL,
     EIDOLONS,
-    WEAPONS
+    WEAPONS,
+    COMBINED
 }

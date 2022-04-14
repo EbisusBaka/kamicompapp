@@ -24,7 +24,7 @@ class DashboardFragment : Fragment() {
 
     private lateinit var adapter: DashboardAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return binding.root
     }
 
@@ -51,6 +51,9 @@ class DashboardFragment : Fragment() {
                     }
                     DashboardViewModel.Event.OpenSoulList -> Unit
                     DashboardViewModel.Event.OpenWeaponList -> Unit
+                    DashboardViewModel.Event.OpenCombinedList -> findNavController().navigate(
+                        DashboardFragmentDirections.actionDashboardToCombinedList()
+                    )
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)

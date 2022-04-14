@@ -15,6 +15,9 @@
     <action
         android:id="@+id/action_dashboard_to_chara_list"
         app:destination="@id/chara_list" />
+    <action
+        android:id="@+id/action_dashboard_to_combined_list"
+        app:destination="@id/combined_list" />
   </fragment>
 
   <fragment
@@ -24,6 +27,20 @@
       tools:layout="@layout/fragment_chara_list">
     <action
         android:id="@+id/action_chara_list_to_chara_details"
+        app:destination="@id/chara_details">
+      <argument
+          android:name="kamihimeId"
+          app:argType="long" />
+    </action>
+  </fragment>
+
+  <fragment
+      android:id="@+id/combined_list"
+      android:name="ebisus.monkagiga.kamicompapp.android.ui.combined.CombinedListFragment"
+      android:label="Combined List"
+      tools:layout="@layout/fragment_combined_list">
+    <action
+        android:id="@+id/action_combined_list_to_chara_details"
         app:destination="@id/chara_details">
       <argument
           android:name="kamihimeId"

@@ -56,6 +56,11 @@ class DashboardViewModel @Inject constructor(
                             imageResourceProvider.getPath("illustzoom", "weapon", id, 0, "png", false)
                         },
                         text = R.string.weapons,
+                    ),
+                    DashboardItem(
+                        dashboardItemType = DashboardItemType.COMBINED,
+                        imageUrlGenerator = null,
+                        text = R.string.all,
                     )
                 )
             )
@@ -72,6 +77,7 @@ class DashboardViewModel @Inject constructor(
             DashboardItemType.SOUL -> eventChannel.send(Event.OpenSoulList)
             DashboardItemType.EIDOLONS -> eventChannel.send(Event.OpenEidolonList)
             DashboardItemType.WEAPONS -> eventChannel.send(Event.OpenWeaponList)
+            DashboardItemType.COMBINED -> eventChannel.send(Event.OpenCombinedList)
         }
     }
 
@@ -84,5 +90,6 @@ class DashboardViewModel @Inject constructor(
         object OpenSoulList : Event()
         object OpenEidolonList : Event()
         object OpenWeaponList : Event()
+        object OpenCombinedList : Event()
     }
 }

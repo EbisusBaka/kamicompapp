@@ -1,0 +1,36 @@
+package ebisus.monkagiga.kamicompapp.android.ui.combined
+
+enum class FilterTag(val text: String, val category: FilterTagCategory) {
+    KAMIHIME("Kamihime", category = FilterTagCategory.ITEM_TYPE),
+    SOUL("Soul", category = FilterTagCategory.ITEM_TYPE),
+    EIDOLON("Eidolon", category = FilterTagCategory.ITEM_TYPE),
+    N("N", category = FilterTagCategory.RARITY),
+    R("R", category = FilterTagCategory.RARITY),
+    SR("SR", category = FilterTagCategory.RARITY),
+    SSR("SSR", category = FilterTagCategory.RARITY),
+    FLB("FLB", category = FilterTagCategory.RARITY),
+    CAN_AWAKEN("Can Awaken", category = FilterTagCategory.AWAKEN_INFO),
+    AWAKENED("Awakened", category = FilterTagCategory.AWAKEN_INFO),
+    FIRE("Fire", category = FilterTagCategory.ELEMENT),
+    WATER("Water", category = FilterTagCategory.ELEMENT),
+    WIND("Wind", category = FilterTagCategory.ELEMENT),
+    THUNDER("Thunder", category = FilterTagCategory.ELEMENT),
+    LIGHT("Light", category = FilterTagCategory.ELEMENT),
+    DARK("Dark", category = FilterTagCategory.ELEMENT),
+    PHANTOM("Phantom", category = FilterTagCategory.ELEMENT),
+    NO_ELEMENT("No Element", category = FilterTagCategory.ELEMENT),
+    BALANCE("Balance", category = FilterTagCategory.CHARACTER_TYPE),
+    DEFENSE("Defense", category = FilterTagCategory.CHARACTER_TYPE),
+    HEALER("Healer", category = FilterTagCategory.CHARACTER_TYPE),
+    OFFENSE("Offense", category = FilterTagCategory.CHARACTER_TYPE),
+    TRICKY("Tricky", category = FilterTagCategory.CHARACTER_TYPE),
+    GACHA("Gacha", category = FilterTagCategory.OBTAIN_LOCATION),
+    GACHA_LIMITED("Gacha Limited", category = FilterTagCategory.OBTAIN_LOCATION),
+    EVENT("Event", category = FilterTagCategory.OBTAIN_LOCATION),
+    MAIN_STORY("Main Story", category = FilterTagCategory.OBTAIN_LOCATION),
+    SHOP("Shop", category = FilterTagCategory.OBTAIN_LOCATION),
+
+    /* Tags deduced by abilities or hardcoded*/
+    LIGHT_ATK_UP_A("Light ATK^ [A]", category = FilterTagCategory.BUFF),
+    DARK_RST_UP_A("DARK RST^ [A]", category = FilterTagCategory.DEBUFF),
+}

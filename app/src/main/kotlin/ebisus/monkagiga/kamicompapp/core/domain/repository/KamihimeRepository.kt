@@ -24,6 +24,8 @@ class KamihimeRepository @Inject constructor(
         return kamihimeDao.getKamihimeDetails(id)
     }
 
+    suspend fun getKamihimeDetailsList(): List<KamihimeDetails> = kamihimeDao.getKamihimeDetailsList()
+
     suspend fun updateKamihime(kamihime: Kamihime) {
         kamihimeDao.clearKamihime(kamihime.id)
         val kamihimeId = kamihimeDao.updateKamihime(kamihime)

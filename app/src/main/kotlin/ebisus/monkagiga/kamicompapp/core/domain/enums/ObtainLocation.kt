@@ -4,5 +4,6 @@ enum class ObtainLocation {
     GACHA,
     GACHA_LIMITED,
     EVENT,
-    SHOP
+    SHOP,
+    MAIN_STORY
 }

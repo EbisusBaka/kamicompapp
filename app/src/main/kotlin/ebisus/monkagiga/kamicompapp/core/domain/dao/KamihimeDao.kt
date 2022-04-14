@@ -21,4 +21,7 @@ interface KamihimeDao {
 
     @Query("SELECT * FROM Kamihime where id = :id")
     suspend fun getKamihimeDetails(id: Long): KamihimeDetails?
+
+    @Query("SELECT * FROM Kamihime")
+    suspend fun getKamihimeDetailsList(): List<KamihimeDetails>
 }

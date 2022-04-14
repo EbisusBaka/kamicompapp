@@ -16,4 +16,13 @@
   <color name="abilityBlue">#2196F3</color>
   <color name="abilityYellow">#FF9800</color>
   <color name="abilityGreen">#4CAF50</color>
+
+  <color name="combinedList">#45ed79</color>
+
+  <color name="chipBgSelected">#C6FFC0</color>
+  <color name="chipBgUnselected">#ECECEC</color>
+  <color name="chipStrokeSelected">#279C06</color>
+  <color name="chipStrokeUnselected">#4F4F4F</color>
+  <color name="chipTextSelected">#279C06</color>
+  <color name="chipTextUnselected">#4F4F4F</color>
 </resources>
